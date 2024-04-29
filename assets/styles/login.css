@@ -1,0 +1,70 @@
+:root{
+    
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f4f9;
+}
+/* login page */
+    #form-login {
+        width: 75%;
+    }
+
+    #container-login-form-google{
+        margin: auto;
+        width: 100%;
+    }
+
+    #container-login-form{
+        display: flex;
+        justify-content: space-between;
+        height: 55vh;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: white;
+    }
+
+    #container-login-text {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #container-login-form-input-part {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        width: 50%;
+    }
+
+    #container-login-form-mail-part {
+        width: 100%;
+    }
+
+    #container-login-form-mail-part> label {
+        position: absolute;
+        margin-left: 20px;
+        margin-top: -9px;
+        padding: 0 5px;
+        background-color: white;
+        font-size: 0.7vw;
+    }
+
+    #inputEmail {
+        height: 55px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #878585;
+        border-radius: 5px;
+        font-size: 1.2vw;
+    }
+
+    #login-forget-mail {
+        padding: 10px 0;
+        color: #0b57d0;
+    }

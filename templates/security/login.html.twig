@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('styles/login.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Connexion : comptes Google{% endblock %}
+
+{% block body %}
+<form id="form-login" method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {# {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %} #}
+
+    <div id="container-login-form-google">
+        <div id="container-login-form">            
+            <div id="container-login-text">
+                <div id="container-head-login-logo">
+                    <div id="container-login-logo">
+                        <img src="{{ asset('img/Ggoogle.svg') }}" >
+                    </div>
+                </div>
+                <div id="container-login-title">
+                    <h1 id="container-login-title-text">Connexion</h1>
+                </div>
+                <div id="container-login-subTitle">
+                    <h2 id="container-login-subTitle-text">Utiliser votre compte Google</h2>
+                </div>
+            </div>
+            <div id="container-login-form-input-part">
+                <div id="container-login-form-mail-part">
+                    <label for="inputEmail">Adresse e-mail ou numéro de téléphone</label>
+                    <input type="email" placeholder="Veuillez renseigner votre e-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    <div id="login-forget-mail">Adresse e-mail oubliée ?</div>
+                </div>
+                <div id="container-login-form-text-part">
+                    <div id="container-login-form-text-help">
+                       <p>S'il ne s'agit pas de votre ordinateur, utilisez le mode Invité pour vous connecter en mode privé.</p>
+                       <a href="https://support.google.com/chrome/answer/6130773?hl=fr">En savoir plus sur l'utilisation du mode Invité.</a>
+                    </div>
+                </div>
+                <div id="container-login-form-button">
+                    <button id="button-create-account" class="button-create-account"><a href="/register">Créer un compte</a></button>
+                    <button id="button-login-form-next-step">Suivant</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" name="_remember_me"> Remember me
+        </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+{% endblock %}

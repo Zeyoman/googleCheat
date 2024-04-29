@@ -1,3 +1,11 @@
-body {
-    background-color: skyblue;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 500;
 }
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+

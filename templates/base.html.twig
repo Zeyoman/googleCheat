@@ -2,8 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Google{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         {% block stylesheets %}
         {% endblock %}
 
@@ -12,6 +15,27 @@
         {% endblock %}
     </head>
     <body>
+    {% if app.user %}
+        <div>
+            <div id="first-line-header">
+                <div id="first-header-logo-google">
+                    <img src="{{ asset('img/google-logo-white.png') }}">
+                </div>
+                <div id="first-header-search-bar">
+                    <a href="{{ path('app_post_new') }}">Create new</a>
+                </div>
+                <div id="first-header-options">
+                    {{app.user.name}}
+                    <a href="/logout">prout</a>
+                </div>
+            </div>
+            <div id="second-line-header">
+                <div id="second-header-tools-1"></div>
+                <div id="second-header-tools-2"></div>
+                <div id="second-header-tools-3"></div>
+            </div>
+        </div>
+    {% endif %}
         {% block body %}{% endblock %}
     </body>
 </html>

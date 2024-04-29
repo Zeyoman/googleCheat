@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post index{% endblock %}
+
+{% block body %}
+    <h1>Post index</h1>
+    <div id="conseil-mots"></div>
+    {% if posts|length <= 0 %}
+        <h2 id="number-of-post"></h2>
+    {% else %}
+        <h2>{{ posts|length }} Posts found.</h2>
+    {% endif %}
+    {% for post in posts %}
+        <div>
+            <div>
+                <img src="../../assets/img/gitlogo.png">
+            </div>
+            <div>{{ post.id }}</div>
+            <div>{{ post.titre }}</div>
+            <div>{{ post.Description }}</div>
+            <div>
+                <a href="{{ path('app_post_show', {'id': post.id}) }}">show</a>
+                <a href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <div colspan="4">no records found</div>
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('app_post_new') }}">Create new</a>
+{% endblock %}
