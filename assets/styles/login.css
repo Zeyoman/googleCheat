@@ -1,5 +1,5 @@
 :root{
-    
+    --color-blue-google: #0b57d0;
 }
 
 body{
@@ -22,7 +22,7 @@ body{
     #container-login-form{
         display: flex;
         justify-content: space-between;
-        height: 55vh;
+        height: 50vh;
         padding: 30px;
         border-radius: 20px;
         background-color: white;
@@ -37,16 +37,21 @@ body{
     #container-login-form-input-part {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: flex-end;
         align-items: flex-end;
-        width: 50%;
+        width: 85%;
+        gap: 15%;
     }
 
     #container-login-form-mail-part {
         width: 100%;
     }
 
-    #container-login-form-mail-part> label {
+    #container-login-form-password-part {
+        width: 100%;
+    }
+
+    #container-login-form-mail-part > label, #container-login-form-input-password-part > label {
         position: absolute;
         margin-left: 20px;
         margin-top: -9px;
@@ -55,7 +60,7 @@ body{
         font-size: 0.7vw;
     }
 
-    #inputEmail {
+    .form-control {
         height: 55px;
         width: 100%;
         padding: 10px;
@@ -66,5 +71,112 @@ body{
 
     #login-forget-mail {
         padding: 10px 0;
-        color: #0b57d0;
+        color: var(--color-blue-google);
+    }
+
+    #container-login-form-text-help > a {
+        text-decoration: none;
+        color: var(--color-blue-google);
+    }
+
+    .button-create-account {
+        background: transparent;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 100px;
+    }
+
+    .button-create-account > a {
+        text-decoration: none;
+        color: var(--color-blue-google);
+    }
+
+    .button-login-form-next-step {
+        padding: 10px 20px;
+        color: white;
+        background-color: var(--color-blue-google);
+        border: none;
+        border-radius: 100px;
+    }
+
+    .form-control:focus {
+        border: none;
+        outline: 2px solid var(--color-blue-google);
+    }
+
+    #container-login-form-text-help {
+        font-size: 14px;
+        color: #444746;
+    }
+
+    #container-login-subTitle-text {
+        font-size: 16px;
+    }
+
+    .button-login-form-next-step {
+        margin-left: 15px;
+    }
+
+    .part-one {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #container-login-form-switch {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .secondOne {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        border: 1px solid black;
+        border-radius: 50px;
+    }
+
+    .secondOne > .material-symbols-outlined {
+        margin-right: 5px;
+    }
+
+    .part-two{
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 50%;
+        gap: 30%;
+    }
+
+    #container-login-form-seePassword-part {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    #container-login-form-seePassword-part > label{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    #seePassword, #rememberLog {
+        appearance: none;
+        width: 17px;
+        height: 17px;
+        border: 1.5px solid #1f1f1f;
+        border-radius: 2px;
+    }
+
+    #container-button-finish {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #seePassword:checked{
+        appearance: checkbox;
+    }
+
+    #rememberLog:checked{
+        appearance: checkbox;
     }

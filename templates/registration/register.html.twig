@@ -1,19 +1,97 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('styles/create.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div id="testDiv">
+        <div id="container-create-form-google">
+            {{ form_errors(registrationForm) }}
+            <div id="container-form-title">
+                <div id="container-head-login-logo">
+                    <div id="container-login-logo">
+                        <img src="{{ asset('img/Ggoogle.svg') }}" >
+                    </div>
+                </div>
+                <div id="container-login-title">
+                    <h1 id="container-login-title-text">Créer un compte Google</h1>
+                </div>
+                <div id="container-login-subTitle">
+                    <h2 id="container-login-subTitle-text">Saisissez votre nom</h2>
+                </div>
+            </div>
+            <div id="container-form-bloc">
+                {{ form_start(registrationForm) }}
+                    <div id="etape1" class="containerInfo active">
+                        {{ form_row(registrationForm.pseudo ,  {'attr': {'placeholder': 'Entrer votre pseudo'}}) }}
+                        {{ form_row(registrationForm.name ,  {'attr': {'placeholder': 'Entrer votre nom et prénom'}}) }}
+                    </div>
+                    <div id="etape2" class="containerInfo" style="display:none;">
+                        {{ form_row(registrationForm.email ,  {'attr': {'placeholder': 'Entrer votre mail'}}) }}
+                        {{ form_row(registrationForm.plainPassword ,  {'attr': {'placeholder': 'Entrer votre mot de passe'}}) }}
+                    </div>
+                    <div id="etape3" class="containerInfo" style="display:none;">
+                        {{ form_row(registrationForm.years ,  {'attr': {'placeholder': 'Entrer votre année d\'étude'}}) }}
+                        {{ form_row(registrationForm.school ,  {'attr': {'placeholder': 'Entrer votre école'}}) }}
+                        <div>
+                            {{ form_label(registrationForm.spe) }}
+                            <input type="text" value="{{ field_value(registrationForm.spe) }}" name="{{ field_name(registrationForm.spe) }}" placeholder="Entrer votre spécialité d'étude">
+                        </div>
+                        
+                        {{ form_row(registrationForm.agreeTerms) }}
 
-    {{ form_errors(registrationForm) }}
+                        <button type="submit" id="buttonRegister" class="btn">Register</button>
+                    </div>
+                {{ form_end(registrationForm) }}
+            </div>
+            <div id="button-navigation">
+                <button id="precedent">Annuler</button>
+                <button id="suivant">Suivant</button>
+            </div>
+            <div id="redirection">
+                <a href="/">Se connecter</a>
+            </div> 
+        </div>
+    </div>
+<script>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    document.getElementById('suivant').addEventListener('click', function(){
+        if(document.getElementsByClassName('active')[0].id != 'etape3' ){
+            if(document.getElementsByClassName('active')[0].id == 'etape1'){
+                document.getElementById('precedent').innerText = "Précédent";
+            } else if(document.getElementsByClassName('active')[0].id == 'etape2'){
+                document.getElementById('suivant').innerText = "Valider";
+                document.getElementById('buttonRegister').click();
+            }
+            ident = document.getElementsByClassName('active')[0].id
+            document.getElementById(ident).style.display = "none";
+            numberId = ident.replace(/\D/g, "");
+            idNext = "etape"+(parseInt(numberId) + 1);
+            document.getElementById(idNext).style.display = "flex"
+            document.getElementById(ident).classList.remove('active');
+            document.getElementById(idNext).classList.add('active');
+        }
+    })
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    document.getElementById('precedent').addEventListener('click', function(){
+        if(document.getElementsByClassName('active')[0].id != 'etape1' ){
+            if(document.getElementsByClassName('active')[0].id == 'etape2'){
+                document.getElementById('precedent').innerText = "Annuler";
+            } else if(document.getElementsByClassName('active')[0].id == 'etape3'){
+                document.getElementById('suivant').innerText = "Suivant";
+            }
+            ident = document.getElementsByClassName('active')[0].id
+            document.getElementById(ident).style.display = "none";
+            numberId = ident.replace(/\D/g, "");
+            idNext = "etape"+(parseInt(numberId) - 1);
+            document.getElementById(idNext).style.display = "flex";
+            document.getElementById(ident).classList.remove('active');
+            document.getElementById(idNext).classList.add('active');
+        }
+    })
+
+</script>
 {% endblock %}

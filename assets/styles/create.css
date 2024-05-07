@@ -1,0 +1,125 @@
+:root {
+    --color-blue-google: #0b57d0;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    background-color: #f0f4f9;
+}
+
+#container-create-form-google {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 75%;
+    height: 50vh;
+    max-height: 425px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+#container-form-title {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 85%;
+}
+
+.containerInfo > div > input {
+    height: 55px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #878585;
+    border-radius: 5px;
+    font-size: 1.2vw;
+}
+
+#container-form-bloc {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#button-navigation {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#suivant {
+    margin-left: 15px;
+}
+
+.containerInfo {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 20px;
+}
+
+.containerInfo > div > label {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -9px;
+    padding: 0 5px;
+    background-color: white;
+    font-size: 1vw;
+}
+
+#precedent {
+    background: transparent;
+    color: var(--color-blue-google);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 100px;
+}
+
+#suivant {
+    margin-left: 15px;
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--color-blue-google);
+    border: none;
+    border-radius: 100px;
+}
+
+#etape3 > div:nth-last-child(-n + 2){
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+}
+
+#etape3 > div:nth-last-child(-n + 2) > input{
+    height: 20px;
+    width: auto;
+}
+
+#etape3 > div:nth-last-child(-n + 2) > label{
+    position: unset;
+    margin: 0;
+}
+
+#etape3 > button{
+    display: none;
+}
+
+#redirection {
+    position: absolute;
+    top: 70%;
+    margin-left: -20px;
+}
+
+#redirection > a {
+    color: grey;
+    text-decoration: none;
+}

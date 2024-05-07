@@ -19,56 +19,100 @@
     {% endif %} #}
 
     <div id="container-login-form-google">
-        <div id="container-login-form">            
-            <div id="container-login-text">
-                <div id="container-head-login-logo">
-                    <div id="container-login-logo">
-                        <img src="{{ asset('img/Ggoogle.svg') }}" >
+        <div id="container-login-form">
+            <div id="container-login-form-switch">
+                <div id="container-login-text">
+                    <div id="container-head-login-logo">
+                        <div id="container-login-logo">
+                            <img src="{{ asset('img/Ggoogle.svg') }}" >
+                        </div>
+                    </div>
+                    <div id="container-login-title">
+                        <h1 id="container-login-title-text">Connexion</h1>
+                    </div>
+                    <div id="container-login-subTitle">
+                        <h2 id="container-login-subTitle-text">Utiliser votre compte Google</h2>
                     </div>
                 </div>
-                <div id="container-login-title">
-                    <h1 id="container-login-title-text">Connexion</h1>
-                </div>
-                <div id="container-login-subTitle">
-                    <h2 id="container-login-subTitle-text">Utiliser votre compte Google</h2>
-                </div>
-            </div>
-            <div id="container-login-form-input-part">
-                <div id="container-login-form-mail-part">
-                    <label for="inputEmail">Adresse e-mail ou numéro de téléphone</label>
-                    <input type="email" placeholder="Veuillez renseigner votre e-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                    <div id="login-forget-mail">Adresse e-mail oubliée ?</div>
-                </div>
-                <div id="container-login-form-text-part">
-                    <div id="container-login-form-text-help">
-                       <p>S'il ne s'agit pas de votre ordinateur, utilisez le mode Invité pour vous connecter en mode privé.</p>
-                       <a href="https://support.google.com/chrome/answer/6130773?hl=fr">En savoir plus sur l'utilisation du mode Invité.</a>
+                <div class="part-one">
+                    <div id="container-login-form-input-part">
+                        <div id="container-login-form-mail-part">
+                            <label for="inputEmail">Adresse e-mail ou numéro de téléphone</label>
+                            <input type="email" placeholder="Veuillez renseigner votre e-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <div id="login-forget-mail">Adresse e-mail oubliée ?</div>
+                        </div>
+                        <div id="container-login-form-text-part">
+                            <div id="container-login-form-text-help">
+                            <p>S'il ne s'agit pas de votre ordinateur, utilisez le mode Invité pour vous connecter en mode privé.</p>
+                            <a href="https://support.google.com/chrome/answer/6130773?hl=fr">En savoir plus sur l'utilisation du mode Invité.</a>
+                            </div>
+                        </div>
+                        <div id="container-login-form-button">
+                            <button id="button-create-account" class="button-create-account"><a href="/register">Créer un compte</a></button>
+                            <button id="button-login-form-next-step" class="button-login-form-next-step" type="button">Suivant</button>
+                        </div>
                     </div>
                 </div>
-                <div id="container-login-form-button">
-                    <button id="button-create-account" class="button-create-account"><a href="/register">Créer un compte</a></button>
-                    <button id="button-login-form-next-step">Suivant</button>
+                <div class="part-two" style="display:none;">
+                    <div id="container-login-form-password-part">
+                        <div id="container-login-form-input-password-part">
+                            <label for="inputPassword">Mot de passe</label>
+                            <input type="password" name="password" placeholder="Saisissez votre mot de passe" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                            <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+                        </div>
+                        <div id="container-login-form-seePassword-part">
+                            <label for="seePassword">
+                                <input type="checkbox" name="seePassword" id="seePassword">Afficher le mot de passe
+                            </label>
+                            <label>
+                                <input id="rememberLog" type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div id="container-button-finish">
+                        <button id="button-create-account-finish" class="button-create-account"><a href="/register">Mot de passe oublié ?</a></button>
+                        <button class="button-login-form-next-step" type="submit">Suivant</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
-    </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
 </form>
+<script>
+    const containerSwitchName = document.getElementById('container-login-subTitle')
+    const switchName = document.getElementById('container-login-subTitle-text')
+    const inputPassword = document.getElementById('inputPassword')
+
+    document.getElementById('button-login-form-next-step').addEventListener('click',function(){
+        if(document.getElementById('inputEmail').value == ''){
+            // changer l'apparance
+            document.getElementById('inputEmail').style.outline = '3px solid #db4a39'
+            document.getElementById('inputEmail').style.border = 'none'
+        } else{
+            // changer l'apparition
+            document.getElementsByClassName('part-one')[0].style.display = 'none';
+            document.getElementsByClassName('part-two')[0].style.display = 'flex';
+            // changer le texte et enlever les div 
+            containerSwitchName.className = "secondOne"
+            var mailValue = document.getElementById('inputEmail').value
+            containerSwitchName.removeChild(switchName)
+            const containerMail = document.createElement('div');
+            containerMail.className = 'mail-name-get';
+            containerMail.textContent = mailValue
+            const userIcon = document.createElement('span');
+            userIcon.className = 'material-symbols-outlined';
+            userIcon.textContent = 'person';
+            containerSwitchName.appendChild(userIcon);
+            containerSwitchName.appendChild(containerMail);
+        }
+    })
+
+    document.getElementById('seePassword').addEventListener('click',function(){
+        if(this.checked){
+            inputPassword.type = "text";
+        }else{
+            inputPassword.type = "password";
+        }
+    })
+</script>
 {% endblock %}
