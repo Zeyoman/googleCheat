@@ -123,3 +123,8 @@ form {
     color: grey;
     text-decoration: none;
 }
+
+#big-container-create-form-google{
+    display: flex;
+    width: 100%;
+}

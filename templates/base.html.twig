@@ -17,17 +17,30 @@
     </head>
     <body>
     {% if app.user %}
-        <div>
+        <div id="container-header">
             <div id="first-line-header">
-                <div id="first-header-logo-google">
-                    <img src="{{ asset('img/google-logo-white.png') }}">
-                </div>
-                <div id="first-header-search-bar">
-                    <a href="{{ path('app_post_new') }}">Create new</a>
+                <div id="first-double-container-header">
+                    <div id="first-header-logo-google">
+                        <img style="width:92px; height:30px;" src="{{ asset('img/google-logo-white.png') }}">
+                    </div>
+                    <div id="first-header-search-bar">
+                        <a href="{{ path('app_post_new') }}">
+                            <p>Create new</p>
+                            <div id="first-header-icone-search-bar">
+                                <span class="material-symbols-outlined">mic</span>
+                                <span class="material-symbols-outlined">photo_camera</span>
+                                <span class="material-symbols-outlined">search</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div id="first-header-options">
-                    {{app.user.name}}
-                    <a href="/logout">prout</a>
+                    <div id="first-header-options-profil"> 
+                        {{app.user.name|first}}
+                    </div>
+                    <div id="first-header-options-deco">
+                        <a href="/logout"><span class="material-symbols-outlined">logout</span></a>
+                    </div>
                 </div>
             </div>
             <div id="second-line-header">

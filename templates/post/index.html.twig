@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('styles/post.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block title %}Post index{% endblock %}
 
 {% block body %}
@@ -8,7 +12,7 @@
     {% if posts|length <= 0 %}
         <h2 id="number-of-post"></h2>
     {% else %}
-        <h2>{{ posts|length }} Posts found.</h2>
+        <h2 id="number-of-post">{{ posts|length }} Posts found.</h2>
     {% endif %}
     {% for post in posts %}
         <div>
@@ -34,13 +38,17 @@
 
     
 <script>
-/**
- * Permet de faire le système de résultats
- */
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    /**
+    * Permet de faire le système de résultats
+    */
     const randomNumberPost = Math.floor(Math.random() * 1000000000) + 10000;
     var randomNumberSeconds = Math.random()
     randomNumberSeconds = randomNumberSeconds.toFixed(2);
     document.getElementById('number-of-post').innerHTML ="Environ "+ randomNumberPost +" résultats ("+randomNumberSeconds+" secondes)"
+
+});
 
 /**
  * Permet d'avoir des mots random

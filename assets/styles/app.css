@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-weight: 500;
 }
+
 body {
     font-family: "Open Sans", sans-serif;
 }
@@ -11,5 +12,6 @@ body {
 input, button{
     cursor: pointer;
 }
+
 
 

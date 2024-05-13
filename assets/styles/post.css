@@ -1,0 +1,87 @@
+html{
+    background-color: #1f1f1f;
+    padding-top: 20px;
+}
+
+#first-line-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #313335;
+}
+
+#first-header-search-bar {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+#first-header-search-bar > a {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #303134;
+    color: #ffffff5c;
+    text-decoration: none;
+    border-radius: 50px;
+}
+
+#first-header-logo-google{
+    display: flex;
+    align-items: center;
+}
+
+#first-header-icone-search-bar {
+    display: flex;
+    gap: 15px;
+}
+
+#first-header-icone-search-bar {
+    display: flex;
+    align-items: center;
+    height: 75%;
+    padding-left: 15px;
+    border-left: 1.5px grey solid;
+    gap: 15px;
+}
+
+#first-double-container-header {
+    display: flex;
+    width: 100%;
+    margin-left: 75px;
+    gap: 40px;
+}
+
+#first-header-options {
+    display: flex;
+    margin-right: 25px;
+    gap: 20px;
+}
+
+#first-header-options-profil {
+    background-color: #ac3e31;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 125px;
+    border: 1px solid black;
+    color: white;
+}
+
+#first-header-options-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#first-header-options-deco > a{
+    color: white;
+}
+
+#first-header-options-deco > a > span{
+    font-size: 30px;
+}
