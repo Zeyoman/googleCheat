@@ -6,7 +6,7 @@ html{
 #first-line-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #313335;
+    /* border-bottom: 1px solid #313335; */
 }
 
 #first-header-search-bar {
@@ -84,4 +84,23 @@ html{
 
 #first-header-options-deco > a > span{
     font-size: 30px;
+}
+
+#second-line-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 250px;
+    margin-top: 25px;
+}
+
+#second-line-header > div {
+    display: flex;
+}
+
+#second-header-tools-1 {
+    gap: 14px;
+}
+
+.second-header-tools-option {
+    color: #9aa0a6;
 }
