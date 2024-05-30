@@ -7,34 +7,43 @@
 {% block title %}Post index{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
-    <div id="conseil-mots"></div>
-    {% if posts|length <= 0 %}
-        <h2 id="number-of-post"></h2>
-    {% else %}
-        <h2 id="number-of-post">{{ posts|length }} Posts found.</h2>
-    {% endif %}
-    {% for post in posts %}
-        <div>
-            <div>
-                <img src="../../assets/img/gitlogo.png">
-            </div>
-            <div>{{ post.id }}</div>
-            <div>{{ post.titre }}</div>
-            <div>{{ post.Description }}</div>
-            <div>
-                <a href="{{ path('app_post_show', {'id': post.id}) }}">show</a>
-                <a href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>
-            </div>
-        </div>
-    {% else %}
-        <div>
-            <div colspan="4">no records found</div>
-        </div>
-    {% endfor %}
-
-    <a href="{{ path('app_post_new') }}">Create new</a>
-
+    <section id="container-post">
+        {% if app.user %}
+            {% if posts|length <= 0 %}
+                <h2 id="number-of-post"></h2>
+            {% else %}
+                <h2 id="number-of-post">{{ posts|length }} Posts found.</h2>
+            {% endif %}
+            {% for post in posts|reverse %}
+                <div class="container-publication" id="{{ post.id }}">
+                    <div class="container-publication-top">
+                        <div class="container-publication-image">
+                            <img src="{{ asset('img/stackoverflowlogo.png') }}">
+                        </div>
+                        <div class="container-publication-site-name">
+                            <h6 class="container-publication-site-name1-random">Wikipedia</h6>
+                            <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+                        </div>
+                    </div>
+                    {# {% if "ROLES_ADMIN" in app.user.role %}
+                        <div>{{ post.id }}</div>
+                    {% endif %} #}
+                    <div class="container-publication-title">{{ post.titre }}</div>
+                    <div class="container-publication-description">{{ post.Description }}</div>
+                    {# <div>
+                        <a href="{{ path('app_post_show', {'id': post.id}) }}">show</a>
+                        <a href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>
+                    </div> #}
+                </div>
+            {% else %}
+                <div>
+                    <div colspan="4">no records found</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <a href="/">Vous n'êtes pas connecté. Veuillez vous connecter pour acceder au publications</a>
+        {% endif %}
+    </section>
 
     
 <script>
@@ -44,16 +53,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
     * Permet de faire le système de résultats
     */
     const randomNumberPost = Math.floor(Math.random() * 1000000000) + 10000;
-    var randomNumberSeconds = Math.random()
+    var randomNumberSeconds = Math.random();
     randomNumberSeconds = randomNumberSeconds.toFixed(2);
-    document.getElementById('number-of-post').innerHTML ="Environ "+ randomNumberPost +" résultats ("+randomNumberSeconds+" secondes)"
+    document.getElementById('number-of-post').innerHTML ="Environ "+ randomNumberPost +" résultats ("+randomNumberSeconds+" secondes)";
 
+    /**
+    * Permet d'avoir des images aléatoires
+    */
+    const imageArray = ["gitlogo.png","stackoverflowlogo.png","wikilogo.png"];
+    let publications = document.querySelectorAll(".container-publication-image");
+    publications.forEach( element => {
+        var testNumero = Math.floor(Math.random() * imageArray.length)
+        element.children[0].currentSrc = "img/"+imageArray[testNumero]+"";
+
+    })
 });
 
 /**
  * Permet d'avoir des mots random
  */
-    fetch("https://trouve-mot.fr/api/categorie/22/5")
+    {# fetch("https://trouve-mot.fr/api/categorie/22/5")
         .then((response) => response.json())
         .then((words) => {
             console.log(words.length);
@@ -64,7 +83,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 divWord.innerHTML = word
                 document.getElementById('conseil-mots').appendChild(divWord)
             }
-        });
+        }); #}
 </script>
 {% endblock %}
 

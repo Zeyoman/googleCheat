@@ -1,0 +1,47 @@
+#post {
+    position: absolute;
+    margin-left: 175px;
+    margin-top: 20px;
+    top: 0;
+    padding: 20px;
+    border-radius: 25px;
+    width: 40%;
+    min-height: 100px;
+    background-color: #303134;
+}
+
+#post > div > label{
+    display: none;
+}
+
+#post > div:nth-child(1) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+#post_titre {
+    width: 50%;
+}
+
+#post_Description {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#post_titre, #post_Description {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+#post_titre:focus-visible, #post_Description:focus-visible {
+    outline: transparent;
+}
+
+#first-header-search-bar{
+    opacity: 0;
+}
+
+.container-publication{
+    margin-left: 175px;
+}

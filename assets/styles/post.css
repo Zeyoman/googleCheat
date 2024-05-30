@@ -1,12 +1,26 @@
+:root{
+    --blue-link-google: #8ab4f8;
+    --blue-background-shy-google: #202124;
+    --color-basic-text-google: #9aa0a6;
+    --color-post-text-google: #dadce0;
+}
+
 html{
     background-color: #1f1f1f;
     padding-top: 20px;
 }
 
+h4 {
+    font-size: 14px;
+}
+
+#container-header {
+    border-bottom: 1px solid #313335;
+}
+
 #first-line-header {
     display: flex;
     justify-content: space-between;
-    /* border-bottom: 1px solid #313335; */
 }
 
 #first-header-search-bar {
@@ -50,7 +64,7 @@ html{
 #first-double-container-header {
     display: flex;
     width: 100%;
-    margin-left: 75px;
+    margin-left: 35px;
     gap: 40px;
 }
 
@@ -89,8 +103,9 @@ html{
 #second-line-header {
     display: flex;
     justify-content: space-between;
-    margin-left: 250px;
+    margin-left: 185px;
     margin-top: 25px;
+    margin-right: 20px;
 }
 
 #second-line-header > div {
@@ -102,5 +117,83 @@ html{
 }
 
 .second-header-tools-option {
-    color: #9aa0a6;
+    color: var(--color-basic-text-google);
+}
+
+.tools-1, .tools-2, .tools-3 {
+    padding: 10px 13px;
+    padding-top: 0;
+}
+
+.tools-1:nth-child(1) {
+    color: var(--blue-link-google);
+    border-bottom: 4px solid var(--blue-link-google);
+}
+
+.tools-1:nth-last-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.tools-3 {
+    display: flex;
+}
+
+#container-post{
+    margin-left: 185px;
+    margin-bottom: 40px;
+    width: 50%;
+}
+
+#number-of-post{
+    margin: 10px 0 30px;
+    color: var(--color-basic-text-google);
+    font-size: 14px;
+}
+
+.container-publication-image > img {
+    border-radius: 100px;
+    height: 26px;
+    width: 26px;
+}
+
+.container-publication{
+    color: var(--color-post-text-google);
+}
+
+.container-publication:not(:last-child){
+    margin-bottom: 25px;
+}
+
+.container-publication-top {
+    display: flex;
+    gap: 13px;
+}
+
+.container-publication-site-name1-random {
+    font-size: 16px;
+}
+
+.container-publication-site-name2-random {
+    display: flex;
+    align-items: center;
+    font-size: 9px;
+}
+
+.container-publication-site-name2-random > .container-publication-site-name-edit{
+    font-size: 14px;
+}
+
+.container-publication-site-name-edit{
+    margin-left: 2px;
+}
+
+.container-publication-title {
+    color: var(--blue-link-google);
+    font-size: 20px;
+}
+
+.container-publication-description{
+    max-height: 150px;
+    overflow: auto;
 }

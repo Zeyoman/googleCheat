@@ -1,11 +1,144 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('styles/post.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('styles/newPost.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block title %}New Post{% endblock %}
 
 {% block body %}
-    <h1>Create new Post</h1>
+<div id="form-new-post-container">
+    <div id="form-new-post-form-bloc">
+        {{ include('post/_form.html.twig') }}
+    </div>
+    <div class="form-go-back">
+        <a href="{{ path('app_post_index') }}">back to list</a>
+    </div>
+</div>
+{% if app.user %}
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/stackoverflowlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Stackoverflow</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Comment avoir le meilleure post</div>
+        <div class="container-publication-description">Précisez bien vos besoin, le titre sert comme thème non comme description.</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/gitlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">git</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Meilleur titre</div>
+        <div class="container-publication-description">Le titre doit avoir comme but de faire comprendre le thème du besoin ou de l'aide offert.</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/wikilogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Wikipedia</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Meilleur description</div>
+        <div class="container-publication-description">La description doit avoir le fond du problème, les besoins, la question ou autres. Précisez assez pour que les personnes puissent vous aider.</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/stackoverflowlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Stackoverflow</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Js Random</div>
+        <div class="container-publication-description">Comment faire pour avoir des nombres random ?</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/stackoverflowlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Stackoverflow</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Js Random Réponse</div>
+        <div class="container-publication-description">Math.floor(Math.random() * 10) <- pour avoir un random entre 1 et 10</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/stackoverflowlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Stackoverflow</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Docker</div>
+        <div class="container-publication-description">Pour la deuxieme c'est quoi la réponse ?</div>
+    </div>
+    <div class="container-publication">
+        <div class="container-publication-top">
+            <div class="container-publication-image">
+                <img src="{{ asset('img/stackoverflowlogo.png') }}">
+            </div>
+            <div class="container-publication-site-name">
+                <h6 class="container-publication-site-name1-random">Stackoverflow</h6>
+                <h6 class="container-publication-site-name2-random">https://{{ app.user.pseudo }}.com<span class="material-symbols-outlined container-publication-site-name-edit">more_vert</span></h6>
+            </div>
+        </div>
+        <div class="container-publication-title">Docker réponse</div>
+        <div class="container-publication-description">Docker run ...</div>
+    </div>
+{% else %}
+    <a href="/">Vous n'êtes pas connecté. Veuillez vous connecter pour acceder au publications</a>
+{% endif %}
 
-    {{ include('post/_form.html.twig') }}
+<script>
+document.addEventListener("DOMContentLoaded", (event) => {
 
-    <a href="{{ path('app_post_index') }}">back to list</a>
+    document.getElementById('post_titre').placeholder = "Titre / Theme / Matière du post";
+    document.getElementById('post_Description').placeholder = "Description du problème";
+
+    const tx = document.getElementsByTagName("textarea");
+    for (let i = 0; i < tx.length; i++) {
+        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        tx[i].addEventListener("input", OnInput, false);
+    }
+
+    function OnInput() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + "px";
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            var btn = document.querySelector('.btn');
+            if(btn && document.getElementById('post_Description').value.trim() != ''){
+                btn.click();
+            }
+        }
+    });
+
+});
+</script>
 {% endblock %}
+
